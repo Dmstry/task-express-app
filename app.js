@@ -1,20 +1,22 @@
 const express = require('express');
-const { TaskDB } = require('./models');
+const { tasksController } = require('./controllers');
 
 const app = express();
+
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.status(200).send('Hello, Express App');
 });
 
-app.get('/tasks', (req, res) => {
-  const tasks = TaskDB.getTasks();
-  res.status(200).send(tasks);
-});
+app.get('/tasks', tasksController.getTasks);
 
-app.get('/tasks/:id', (req, res) => {});
-app.post('/tasks', (req, res) => {});
-app.patch('/tasks/:id', (req, res) => {});
-app.delete('/tasks/:id', (req, res) => {});
+app.get('/tasks/:id', tasksController.getTaskById);
+
+app.post('/tasks', tasksController.addTask);
+
+app.patch('/tasks/:id', tasksController.updateTaskById);
+
+app.delete('/tasks/:id', tasksController.deleteTask);
 
 module.exports = app;
