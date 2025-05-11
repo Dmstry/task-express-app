@@ -1,5 +1,6 @@
 const express = require('express');
 const { tasksController } = require('./controllers');
+const { validate } = require('./middleware');
 
 const app = express();
 
@@ -13,9 +14,13 @@ app.get('/tasks', tasksController.getTasks);
 
 app.get('/tasks/:id', tasksController.getTaskById);
 
-app.post('/tasks', tasksController.addTask);
+app.post('/tasks', validate.validateTaskOnAdd, tasksController.addTask);
 
-app.patch('/tasks/:id', tasksController.updateTaskById);
+app.patch(
+  '/tasks/:id',
+  validate.validateTaskOnUpdate,
+  tasksController.updateTaskById
+);
 
 app.delete('/tasks/:id', tasksController.deleteTask);
 
