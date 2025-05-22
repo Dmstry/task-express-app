@@ -12,5 +12,8 @@ module.exports.errorHandler = (err, req, res, next) => {
     return;
   }
 
-  res.status(500).send({ message: 'Server Error' });
+  const status = err.status || 500;
+  const message = err.message || 'Server Error';
+
+  res.status(status).send({ message: message });
 };
