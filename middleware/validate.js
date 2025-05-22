@@ -11,7 +11,8 @@ module.exports.validateTaskOnAdd = async (req, res, next) => {
     req.body = validatedTask;
     next();
   } catch (err) {
-    res.status(422).send('Validation Error');
+    // res.status(422).send({ message: err.errors[0] });
+    next(err);
   }
 };
 
@@ -23,6 +24,7 @@ module.exports.validateTaskOnUpdate = async (req, res, next) => {
     req.body = validatedTask;
     next();
   } catch (err) {
-    res.status(422).send('Validation Error');
+    // res.status(422).send({ message: err.errors[0] });
+    next(err);
   }
 };
