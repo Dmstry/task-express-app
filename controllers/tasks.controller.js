@@ -2,7 +2,8 @@ const createError = require('http-errors');
 const { TaskDB } = require('./../models');
 
 module.exports.getTasks = (req, res) => {
-  const tasks = TaskDB.getTasks();
+  const { page, results } = req.pagination;
+  const tasks = TaskDB.getTasks(page, results);
   res.status(200).send(tasks);
 };
 

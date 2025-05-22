@@ -16,6 +16,83 @@ const tasksDB = [
     deadline: '2025-05-20',
     isDone: true,
   },
+  {
+    id: '2',
+    text: 'Set up routing in Express',
+    createdAt: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
+    deadline: '2025-05-20',
+    isDone: true,
+  },
+  {
+    id: '3',
+    text: 'Set up routing in Express',
+    createdAt: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
+    deadline: '2025-05-20',
+    isDone: true,
+  },
+  {
+    id: '4',
+    text: 'Set up routing in Express',
+    createdAt: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
+    deadline: '2025-05-20',
+    isDone: true,
+  },
+  {
+    id: '5',
+    text: 'Set up routing in Express',
+    createdAt: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
+    deadline: '2025-05-20',
+    isDone: true,
+  },
+  {
+    id: '6',
+    text: 'Set up routing in Express',
+    createdAt: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
+    deadline: '2025-05-20',
+    isDone: true,
+  },
+  {
+    id: '7',
+    text: 'Set up routing in Express',
+    createdAt: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
+    deadline: '2025-05-20',
+    isDone: true,
+  },
+  {
+    id: '8',
+    text: 'Set up routing in Express',
+    createdAt: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
+    deadline: '2025-05-20',
+    isDone: true,
+  },
+  {
+    id: '9',
+    text: 'Set up routing in Express',
+    createdAt: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
+    deadline: '2025-05-20',
+    isDone: true,
+  },
+  {
+    id: '10',
+    text: 'Set up routing in Express',
+    createdAt: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
+    deadline: '2025-05-20',
+    isDone: true,
+  },
+  {
+    id: '11',
+    text: 'Set up routing in Express',
+    createdAt: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
+    deadline: '2025-05-20',
+    isDone: true,
+  },
+  {
+    id: '12',
+    text: 'Set up routing in Express',
+    createdAt: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
+    deadline: '2025-05-20',
+    isDone: true,
+  },
 ];
 
 class TasksDB {
@@ -36,8 +113,8 @@ class TasksDB {
     return this.tasks[this.tasks.length - 1];
   }
 
-  getTasks() {
-    return [...this.tasks];
+  getTasks(page, results) {
+    return [...this.tasks.slice((page - 1) * results, page * results)];
   }
 
   getTaskById(id) {

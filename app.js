@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { tasksController } = require('./controllers');
-const { validate, errorHandlers } = require('./middleware');
+const { validate, errorHandlers, paginate } = require('./middleware');
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
   res.status(200).send('Hello, Express App');
 });
 
-app.get('/tasks', tasksController.getTasks);
+app.get('/tasks', paginate, tasksController.getTasks);
 
 app.get('/tasks/:id', tasksController.getTaskById);
 
